@@ -120,6 +120,7 @@ def get_img_path(filename):
 
 
 if __name__ == '__main__':
-    purchase = YamlReader(settings.TEST_DATA['purchase']).data
-    print(len(purchase))
-    print(purchase)
+    test_data = YamlReader(settings.TEST_DATA['login']).data
+    pass_data = test_data.get('pass_logins')
+    print(len(pass_data))
+    print(pass_data)

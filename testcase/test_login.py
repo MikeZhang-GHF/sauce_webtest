@@ -7,29 +7,18 @@ from time import sleep
 import allure
 import pytest
 
+import settings
 from page.login_page import LoginPage
+from util.file_reader import YamlReader
 from util.report_util import add_img_to_report
 
-# login pass test cases
-data_pass = [
-    ('standard_user', 'secret_sauce'),
-    # ('problem_user', 'secret_sauce'),
-    # ('performance_glitch_user', 'secret_sauce'),
-]
+# login test cases
+login_data = YamlReader(settings.TEST_DATA['login']).data
+# pass logins cases
+data_pass = login_data['pass_logins']
 
-# negative cases
-data_fail = [
-    # ('standard_user', '', 'Epic sadface: Password is required'),  # no password
-    # no username
-    # ('', '', 'Epic sadface: Username is required'),
-    # wrong username
-    # ('wrong_username', 'secret_sauce', 'Epic sadface: Username and password do not match any user in this service'),
-    # wrong password
-    # ('standard_user', 'wrong_password', 'Epic sadface: Username and password do not match any user in this service'),
-    # lockout user
-    ('locked_out_user', 'secret_sauce', 'Epic sadface: Sorry, this user has been locked out.'),
-
-]
+# failed logins cases
+data_fail = login_data['failed_logins']
 
 
 @allure.epic("Login Test")
