@@ -97,6 +97,7 @@ ELEMENT_LOCATOR = {
 # Test data file base path
 TEST_DATA_FILE_DIR = os.path.join(BASE_DIR, 'testdata')
 TEST_DATA = {
+    'login': os.path.join(TEST_DATA_FILE_DIR, 'login_data.yml')
     'purchase': os.path.join(TEST_DATA_FILE_DIR, 'purchase_data.yml')
 }
 
