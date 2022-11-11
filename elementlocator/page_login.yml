@@ -1,0 +1,19 @@
+# username input box
+username:
+  - xpath
+  - //input[@placeholder='Username']
+
+# password input box
+password:
+  - xpath
+  - //input[@placeholder='Password']
+
+# login button
+login_btn:
+  - xpath
+  - //input[@id='login-button']
+
+# failed login info
+error_msg:
+  - xpath
+  - //h3[@data-test='error']

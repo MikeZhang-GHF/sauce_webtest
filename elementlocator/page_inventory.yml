@@ -1,0 +1,9 @@
+# avatar
+avatar:
+  - xpath
+  - //span[text()= 'Products']
+
+# cart icon
+cart_icon:
+  - xpath
+  - //a[@class='shopping_cart_link']

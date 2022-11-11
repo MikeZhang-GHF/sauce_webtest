@@ -1,0 +1,19 @@
+# firstname input box
+firstname:
+  - xpath
+  - //input[@placeholder='First Name']
+
+# lastname input box
+lastname:
+  - xpath
+  - //input[@placeholder='Last Name']
+
+# postal code
+postalcode:
+  - xpath
+  - //input[@placeholder='Zip/Postal Code']
+
+# continue button
+continue_btn:
+  - xpath
+  - //input[@id='continue']

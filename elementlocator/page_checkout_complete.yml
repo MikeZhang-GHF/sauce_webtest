@@ -1,0 +1,9 @@
+# checkout complete
+checkout_complete:
+  - xpath
+  - //span[contains(text(), 'Complete')]
+
+# back home button
+back_home_btn:
+  - xpath
+  - //button[text()='Back Home']
