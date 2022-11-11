@@ -5,12 +5,11 @@
 from time import sleep
 
 import settings
-from page.login_page import LoginPage
 from testdata.data_generator import DataGenerator
 from util.file_reader import YamlReader
 
 # username, password = 'performance_glitch_user', 'secret_sauce'
-username, password = 'standard_user', 'secret_sauce'
+# username, password = 'standard_user', 'secret_sauce'
 
 two_products = ['Sauce Labs Bolt T-Shirt', 'Sauce Labs Onesie']
 config_list = YamlReader(settings.TEST_DATA['purchase']).data
@@ -22,14 +21,14 @@ postalcode = DataGenerator.postalcode()
 
 class TestPurchase:
 
-    def test_purchase_two_products(self, driver):
-        self.__purchase_process(driver, two_products)
+    def test_purchase_two_products(self, login_fixture):
+        self.__purchase_process(login_fixture, two_products)
 
-    def test_purchase_from_config_list(self, driver):
-        self.__purchase_process(driver, config_list)
+    def test_purchase_from_config_list(self, login_fixture):
+        self.__purchase_process(login_fixture, config_list)
 
-    def __purchase_process(self, driver, product_list):
-        inventory_page = LoginPage(driver).login_pass(username, password)
+    def __purchase_process(self, login_fixture, product_list):
+        inventory_page = login_fixture
 
         for product in product_list:
             inventory_page.add_to_cart(product)
