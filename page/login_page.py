@@ -2,6 +2,8 @@
 # -*-coding:utf-8-*-
 # @Time: 2022-11-10 3:40 p.m.
 # Author: Ding
+from time import sleep
+
 import settings
 from page.base_page import BasePage
 from page.inventory_page import InventoryPage
