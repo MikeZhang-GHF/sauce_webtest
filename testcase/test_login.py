@@ -16,7 +16,6 @@ from util.report_util import add_img_to_report
 login_data = YamlReader(settings.TEST_DATA['login']).data
 # pass logins cases
 data_pass = login_data['pass_logins']
-
 # failed logins cases
 data_fail = login_data['failed_logins']
 

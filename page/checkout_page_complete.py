@@ -15,4 +15,4 @@ class CheckoutCompletePage(BasePage):
 
     @property
     def checkout_complete_text(self):
-        return self.get_text(self.checkout_complete)
+        return self.text(self.checkout_complete)

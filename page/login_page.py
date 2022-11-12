@@ -33,4 +33,4 @@ class LoginPage(BasePage):
 
     @property
     def error_message(self):
-        return self.get_text(self.error_msg)
+        return self.text(self.error_msg)

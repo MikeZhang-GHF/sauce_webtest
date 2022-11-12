@@ -4,9 +4,11 @@
 # Author: Ding
 from time import sleep
 
+import pytest
+
 
 class TestInventoryPage:
-
+    @pytest.mark.inventory
     def test_add_to_cart(self, driver, login_fixture):
         products = [
             'Sauce Labs Backpack',

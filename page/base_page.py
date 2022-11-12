@@ -95,7 +95,7 @@ class BasePage:
         element.clear()
         element.send_keys(keys)
 
-    def get_text(self, locator):
+    def text(self, locator):
         """get the text of the element"""
         return self.find_element_visible(locator).text
 

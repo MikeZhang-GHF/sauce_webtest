@@ -27,7 +27,7 @@ class InventoryPage(BasePage, InventoryBase):
 
     @property
     def avatar_text(self):
-        return self.get_text(self.avatar)
+        return self.text(self.avatar)
 
     def add_to_cart(self, product_name):
         """use the different method to locate the product component add to cart button"""

@@ -1,4 +1,5 @@
 pytest
+pytest-assume
 pytest-dependency
 pytest-xdist
 pytest-ordering
