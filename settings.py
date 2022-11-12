@@ -24,11 +24,11 @@ PAGE_LOAD_TIME = 20
 SCRIPT_TIMEOUT = 20
 WINDOW_SIZE = 1920, 1024
 
-# ----------------Chrome属性--------------
-# Chrome启动参数开关
+# ----------------Chrome Option Config--------------
+# Chrome config option switch
 CHROME_OPTION_MARK = True
 
-# Chrome浏览器操作开关
+# Chrome operation switch
 CHROME_METHOD_MARK = True
 
 # headless
@@ -57,7 +57,7 @@ CHROME_ARGUMENTS = [
     "--disable-dev-shm-usage",
 ]
 
-# -------Web element operation-------
+# -------Web Element Locating and Operation Config-------
 # web element location wait time
 UI_TIME_OUT = 300
 POLL_FREQUENCY = 0.5
@@ -110,11 +110,11 @@ SCREENSHOT_DIR = os.path.join(BASE_DIR, 'screenshot')
 # Web element screenshot path
 SCREENSHOT_ELEMENT_DIR = os.path.join(SCREENSHOT_DIR, 'element')
 # ---------Email-----------------
-EMAIL_SENDER = 'zhixiang.zhang2011@gmail.com'
-EMAIL_RECEIVER = 'zhixiang.zhang2011@gmail.com'
+EMAIL_SENDER = ''
+EMAIL_RECEIVER = ''
 EMAIL_SUBJECT = 'python_test'
 EMAIL_SERVER = 'smtp.gmail.com'
-EMAIL_AUTH_CODE = 'gjaubifmuexirlmh'  # 'ktwrfqqeucrnmdrp'
+EMAIL_AUTH_CODE = ''
 EMAIL_MESSAGE = 'automation test result'
 EMAIL_ATTACHMENT = None
 
