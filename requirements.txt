@@ -11,3 +11,4 @@ pyyaml
 xlrd==1.2.0
 requests
 faker
+behave

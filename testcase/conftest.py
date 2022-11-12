@@ -7,13 +7,14 @@ import pytest
 from page.login_page import LoginPage
 from util.browser import ChromeBrowser
 
-global get_driver
+get_driver = None
 
 # valid login for login fixture
 username, password = 'standard_user', 'secret_sauce'
 
 
-@pytest.fixture()
+@pytest.fixture(scope='session')
+# @pytest.fixture()  # parallel testing
 def driver():
     global get_driver
     get_driver = ChromeBrowser().browser

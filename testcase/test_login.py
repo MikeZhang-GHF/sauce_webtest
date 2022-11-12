@@ -21,9 +21,9 @@ data_fail = login_data['failed_logins']
 
 
 @allure.epic("Login Test")
-@allure.story("Test pass and failed logins")
 class TestLogin:
     @pytest.mark.login_pass
+    @allure.story("Test pass logins")
     @allure.feature("Pass Logins")
     @allure.description("Test pass logins")
     @pytest.mark.parametrize('username, password', data_pass)
@@ -38,6 +38,7 @@ class TestLogin:
             add_img_to_report(driver, "pass_logins")
 
     @pytest.mark.login_fail
+    @allure.story("Test failed logins")
     @allure.feature("Failed Logins")
     @allure.description("Test failed logins")
     @pytest.mark.parametrize('username, password, expect', data_fail)

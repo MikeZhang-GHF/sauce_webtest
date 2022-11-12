@@ -2,14 +2,18 @@ login test
 - 查看一下login api 是否可以保持登录状态
 - 如果没有登录，会显示Epic sadface: You can only access '/cart.html' when you are logged in.
 - 登录一段时间session会过期
+- 更精细化的对于如果testcase失败的处理
+- 对于一些异常情况的处理，弹窗等，Exception的处理
 - 查看不同的合法user登录后的状态
-- 安全性，sql注入问题
 - lockout-user 处理
 - problem-user login后的处理, 购买有一些按钮好使, checkout lastname 不能正确输入, 它的测试的plan? 使用截图来进行断言？
 - performance_glitch_user login的处理, 如果对于它的购买流程的测试的处理。时间比较长, 如果没有过，需要重试，尝试几次。
   不成功，跳过？并且记录到报告里面。
 - login as valid user, include problem-user? purchase process? 如何处理
 - 拓展redis对于进度的监控
+- 兼容性的测试，firefox, safari, edge
+- 性能测试，
+- 安全性，sql注入问题
 
 测试报告 Allure
 - 集成测试，集成到jenkins html publisher plugin/jenkins allure
