@@ -4,11 +4,11 @@ pytest-dependency
 pytest-xdist
 pytest-ordering
 pytest-rerunfailures
-allure-pytest==2.8.16
-allure-python-commons==2.9.45
+allure-pytest
+allure-python-commons
+allure-behave
 selenium==3.141.0
 pyyaml
 xlrd==1.2.0
-requests
 faker
 behave
