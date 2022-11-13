@@ -1,4 +1,0 @@
-# finish button
-finish_btn:
-  - xpath
-  - //button[text()='Finish']

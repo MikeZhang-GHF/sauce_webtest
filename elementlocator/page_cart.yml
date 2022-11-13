@@ -1,4 +1,0 @@
-# avatar
-checkout_btn:
-  - xpath
-  - //button[text()='Checkout']
