@@ -31,7 +31,10 @@ class InventoryPage(BasePage, InventoryBase):
 
     def add_to_cart(self, product_name):
         """use the different method to locate the product component add to cart button"""
-        self.click(self.add_to_cart_button(product_name))
+        # the product could be already added to cart
+        _btn = self.add_to_cart_button(product_name)
+        if self.text(_btn) == 'ADD TO CART':
+            self.click(self.add_to_cart_button(product_name))
 
     def goto_cart(self):
         self.scroll_to_element(self.cart_icon)
