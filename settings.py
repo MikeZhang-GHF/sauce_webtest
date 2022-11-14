@@ -32,7 +32,7 @@ CHROME_OPTION_MARK = True
 CHROME_METHOD_MARK = True
 
 # headless
-CHROME_HEADLESS = False
+CHROME_HEADLESS = True
 # page load time
 CHROME_PAGE_LOAD_TIME = 40
 # javascript execution time out
