@@ -20,3 +20,7 @@ class CartPage(BasePage):
     def scroll_to_checkout_button(self):
         """for the better screenshot"""
         self.scroll_to_element(self.checkout_btn)
+
+    @property
+    def checkout_button_text(self):
+        return self.text(self.checkout_btn)
