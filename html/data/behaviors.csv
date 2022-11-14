@@ -1,6 +1,6 @@
 "Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
 "Login Test","Pass Logins","Test pass logins","0","0","3","0","0"
 "Login Test","Failed Logins","Test failed logins","0","0","5","0","0"
-"Test Product Purchase Process","Test add two designated product purchase process","Test designated product and configurable product list purchase process","0","0","1","0","0"
-"Test Product Purchase Process","Test configurable product list purchase process","Test designated product and configurable product list purchase process","0","0","1","0","0"
 "","","","0","0","0","1","0"
+"Test Product Purchase Process","Test configurable product list purchase process","Test designated product and configurable product list purchase process","0","0","1","0","0"
+"Test Product Purchase Process","Test add two designated product purchase process","Test designated product and configurable product list purchase process","0","0","1","0","0"
