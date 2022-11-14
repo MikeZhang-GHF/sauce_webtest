@@ -2,7 +2,6 @@
 # -*-coding:utf-8-*-
 # @Time: 2022-11-11 6:48 a.m.
 # Author: Ding
-from time import sleep
 
 import settings
 from page.base_page import BasePage
@@ -19,8 +18,10 @@ class CheckoutStepOnePage(BasePage):
         self.send_keys(self.postalcode, postalcode)
 
     def continue_checkout(self):
-        self.scroll_to_element(self.continue_btn)
-        sleep(1)
+        self.scroll_to_continue_button()
         self.click(self.continue_btn)
-        sleep(1)
         return CheckoutStepTwoPage(self.driver)
+
+    def scroll_to_continue_button(self):
+        """for the better screenshot"""
+        self.scroll_to_element(self.continue_btn)

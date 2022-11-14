@@ -14,8 +14,10 @@ class CheckoutStepTwoPage(BasePage):
     locators = YamlReader(settings.ELEMENT_LOCATOR['checkout_two']).data
 
     def checkout_finish(self):
-        self.scroll_to_element(self.finish_btn)
-        sleep(1)
+        self.scroll_to_finish_button()
         self.click(self.finish_btn)
-        sleep(1)
         return CheckoutCompletePage(self.driver)
+
+    def scroll_to_finish_button(self):
+        """for the better screenshot"""
+        self.scroll_to_element(self.finish_btn)

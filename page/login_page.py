@@ -2,7 +2,6 @@
 # -*-coding:utf-8-*-
 # @Time: 2022-11-10 3:40 p.m.
 # Author: Ding
-from time import sleep
 
 import settings
 from page.base_page import BasePage
@@ -17,10 +16,19 @@ class LoginPage(BasePage):
         # go to website
         self.get()
         # input username
-        self.send_keys(self.username, username)
+        self.input_username(username)
         # input password
-        self.send_keys(self.password, password)
+        self.input_password(password)
         # click login button
+        self.click_login_button()
+
+    def input_username(self, username):
+        self.send_keys(self.username, username)
+
+    def input_password(self, password):
+        self.send_keys(self.password, password)
+
+    def click_login_button(self):
         self.click(self.login_btn)
 
     def login_pass(self, username: str, password: str):

@@ -15,4 +15,5 @@ class CheckoutCompletePage(BasePage):
 
     @property
     def checkout_complete_text(self):
+        self.scroll_to_element(self.checkout_complete)
         return self.text(self.checkout_complete)
