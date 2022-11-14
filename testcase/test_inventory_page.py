@@ -9,6 +9,7 @@ import pytest
 
 class TestInventoryPage:
     @pytest.mark.inventory
+    @pytest.mark.skip("already included in purchase test")
     def test_add_to_cart(self, driver, login_fixture):
         products = [
             'Sauce Labs Backpack',
