@@ -3,7 +3,6 @@
 # @Time: 2022-11-10 3:10 p.m.
 # Author: Ding
 
-import logging
 import os
 
 # project base dir
@@ -32,7 +31,7 @@ CHROME_OPTION_MARK = True
 CHROME_METHOD_MARK = True
 
 # headless
-CHROME_HEADLESS = True
+CHROME_HEADLESS = False
 # page load time
 CHROME_PAGE_LOAD_TIME = 40
 # javascript execution time out
@@ -66,19 +65,6 @@ POLL_FREQUENCY = 0.5
 # project 1
 SAUCE_PROJECT = 'https://www.saucedemo.com/'
 
-# module 1 path
-
-# database ini file path
-DATABASE_INI_PATH = os.path.join(BASE_DIR, 'database.ini')
-
-# ------ test suite --------
-# smoke test
-SUITE_SMOKE = []
-# function 1 test
-SUITE_FUNCTION_1 = []
-# main test suite
-SUITE_PROJECT1 = []
-
 # ---------Web Element Yaml file----------
 
 # web element yaml file base path
@@ -101,26 +87,8 @@ TEST_DATA = {
     'purchase': os.path.join(TEST_DATA_FILE_DIR, 'purchase_data.yml')
 }
 
-# Image file base path
-IMG_FILE_DIR = os.path.join(BASE_DIR, 'img')
-
 # Screenshot base path
 SCREENSHOT_DIR = os.path.join(BASE_DIR, 'screenshot')
 
 # Web element screenshot path
 SCREENSHOT_ELEMENT_DIR = os.path.join(SCREENSHOT_DIR, 'element')
-# ---------Email-----------------
-EMAIL_SENDER = ''
-EMAIL_RECEIVER = ''
-EMAIL_SUBJECT = 'python_test'
-EMAIL_SERVER = 'smtp.gmail.com'
-EMAIL_AUTH_CODE = ''
-EMAIL_MESSAGE = 'automation test result'
-EMAIL_ATTACHMENT = None
-
-# ----------log file--------------
-LOG_FORMATTER = ('%(asctime)s - %(name)s - %(levelname)s - %(status)s - %(message)s',
-                 '%H:%M:%S')
-LOG_NAME = r'test_log'
-LOG_FILE = os.path.join(BASE_DIR, 'logs')
-LOG_LEVEL = logging.DEBUG
