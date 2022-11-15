@@ -36,19 +36,22 @@ jobs:
         if: matrix.os == 'ubuntu-20.04'
         run: |
             sudo apt install google-chrome-stable
-            sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
+#            sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
+#            sudo apt update
+#            sudo apt install microsoft-edge-stable
+#            sudo apt-get install firefox
+      - name: Install allure
+        if: matrix.os == 'ubuntu-20.04'
+        run: |
             sudo apt update
-            sudo apt install microsoft-edge-stable
-            sudo apt-get install firefox
-#      - name: Install allure
-#        run: |
+            sudo apt -y install allure
 #          brew install allure
       - name: Run web test cases
         run: |
           python webtest_all.py
-#      - name: Generate allure web_test_report
-#        run: |
-#          allure generate web_test_report/ -o web_test_report/html --clean
+      - name: Generate allure web_test_report
+        run: |
+          allure generate web_test_report/ -o web_test_report/html --clean
 #      - name: Deploy web test allure report
 #        uses: JamesIves/github-pages-deploy-action@v4.4.1
 #        with:
