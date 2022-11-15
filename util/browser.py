@@ -5,9 +5,15 @@
 from time import sleep
 from typing import Type, Union
 
-from selenium.webdriver import *
+# import different browser and their options
+from selenium.webdriver import Chrome, ChromeOptions, Firefox, FirefoxOptions, Edge, EdgeOptions, Safari
+from selenium.webdriver.chrome.service import Service as ChromeService
+# from selenium.webdriver.firefox.service import Service as FirefoxService
+# from selenium.webdriver.edge.service import Service as EdgeService
 from webdriver_manager.chrome import ChromeDriverManager
 
+# from webdriver_manager.firefox import GeckoDriverManager
+# from webdriver_manager.microsoft import EdgeChromiumDriverManager
 import settings
 
 
@@ -30,13 +36,15 @@ class Browser:
     script_time_out = settings.SCRIPT_TIMEOUT
     # default headless
     headless = settings.HEADLESS
+    # webdriver manager download matched webdriver for browser
+    service = None
 
-    def __init__(self, browser_type: Type[Union[Chrome, Edge, Firefox, Safari]] = Chrome,
-                 option_type: Type[Union[ChromeOptions, FirefoxOptions]] = ChromeOptions):
+    def __init__(self, browser_type: Type[Union[Chrome, Firefox, Edge, Safari]] = Chrome,
+                 option_type: Type[Union[ChromeOptions, FirefoxOptions, EdgeOptions]] = ChromeOptions):
 
         if not issubclass(browser_type, (Chrome, Edge, Firefox, Safari)):
             raise BrowserTypeError(browser_type)
-        if not issubclass(option_type, (ChromeOptions, FirefoxOptions)):
+        if not issubclass(option_type, (ChromeOptions, FirefoxOptions, EdgeOptions)):
             raise BrowserTypeError(option_type)
 
         self._browser = browser_type
@@ -64,14 +72,15 @@ class ChromeBrowser(Browser):
     page_load_time = settings.CHROME_PAGE_LOAD_TIME
     script_time_out = settings.SCRIPT_TIMEOUT
     windows_size = settings.WINDOW_SIZE
-
+    # config chrome options
     arguments = settings.CHROME_ARGUMENTS
-
+    # run chrome on mobile devices
     experiment = settings.CHROME_EXPERIMENTAL
+    # webdriver manager to manage latest match driver for chrome
+    service = ChromeService(executable_path=ChromeDriverManager().install())
 
     @property
     def options(self):
-        chrome_option = None
         if self.option_mark:
             chrome_option = self._option()
 
@@ -82,30 +91,29 @@ class ChromeBrowser(Browser):
                 chrome_option.add_experimental_option(k, v)
             chrome_option.headless = self.headless
 
-        return chrome_option
+            return chrome_option
+        else:
+            return None
 
     @property
     def browser(self):
         if self.options:  # set options for browser before it starts
-            chrome = self._browser(
-                # automatic download the matched chrome webdriver
-                ChromeDriverManager().install(),
-                options=self.options
-            )
+            chrome = self._browser(service=self.service, options=self.options)
         else:  # default option for browser
-            chrome = self._browser(ChromeDriverManager().install())
+            chrome = self._browser(service=self.service)
 
         if self.method_mark:  # set actions after the browser started
             chrome.implicitly_wait(self.implicit_time)
             chrome.set_script_timeout(self.script_time_out)
             chrome.set_page_load_timeout(self.page_load_time)
             chrome.delete_all_cookies()
-            chrome.set_window_size(*self.windows_size)
+            chrome.maximize_window()
+            # chrome.set_window_size(*self.windows_size)
 
         return chrome
 
 
 if __name__ == '__main__':
     with ChromeBrowser().browser as _chrome:
-        _chrome.get('https://www.saucedemo.com/')
-        sleep(2)
+        _chrome.get('http://www.amazon.ca')
+        sleep(3)

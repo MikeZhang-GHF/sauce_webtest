@@ -26,9 +26,9 @@ CHROME_OPTION_MARK = True
 CHROME_METHOD_MARK = True
 
 # headless
-CHROME_HEADLESS = True
+CHROME_HEADLESS = False
 # page load time
-CHROME_PAGE_LOAD_TIME = 40
+CHROME_PAGE_LOAD_TIME = 30
 # javascript execution time out
 CHROME_SCRIPT_TIMEOUT = 30
 # window size

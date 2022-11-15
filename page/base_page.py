@@ -6,7 +6,6 @@ import datetime
 import os
 
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.android.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -22,9 +21,9 @@ class BasePage:
     url = settings.SAUCE_PROJECT
     locators = {}
 
-    def __init__(self, driver: WebDriver):
+    def __init__(self, driver):
         if not driver:
-            raise Exception("driver must be the instance of WebDriver")
+            raise Exception("page needs driver to operate!")
         self._driver = driver
 
     @property
@@ -32,10 +31,10 @@ class BasePage:
         return self._driver
 
     @driver.setter
-    def driver(self, driver: WebDriver):
+    def driver(self, driver):
         """set to different driver to test different browser compatibility"""
         if not driver:
-            raise Exception("driver must be the instance of WebDriver")
+            raise Exception("page needs driver to operate!")
         self._driver = driver
 
     def __getattr__(self, locator):
