@@ -18,7 +18,7 @@ def parse_nullable_string(text):
 register_type(NullableString=parse_nullable_string)
 
 
-@allure.epic("Test Login")
+@allure.story("BDD-Test Login")
 @given(u'I open chrome browser')
 def open_browser(context):  # context must stay otherwise buggy
     print(context.driver)

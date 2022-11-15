@@ -5,7 +5,7 @@
 import pytest
 
 from page.login_page import LoginPage
-from util.browser import ChromeBrowser
+from util.browser import ChromeBrowser, FirefoxBrowser, EdgeBrowser
 
 get_driver = None
 
@@ -18,6 +18,8 @@ username, password = 'standard_user', 'secret_sauce'
 def driver():
     global get_driver
     get_driver = ChromeBrowser().browser
+    # get_driver = FirefoxBrowser().browser
+    # get_driver = EdgeBrowser().browser
     yield get_driver
     get_driver.quit()
 

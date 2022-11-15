@@ -51,7 +51,46 @@ CHROME_ARGUMENTS = [
     "--disable-dev-shm-usage",
 ]
 
-# -------Web Element Locating and Operation Config-------
+# ----------------Firefox Option Config--------------
+# Firefox config option switch
+FIREFOX_OPTION_MARK = True
+# Firefox's settings after start switch
+FIREFOX_METHOD_MARK = True
+# headless
+FIREFOX_HEADLESS = True
+# page load time
+FIREFOX_PAGE_LOAD_TIME = 40
+# javascript execution time out
+FIREFOX_SCRIPT_TIMEOUT = 30
+
+# ----------------Edge Option Config--------------
+# Firefox config option switch
+EDGE_OPTION_MARK = True
+# Firefox's settings after start switch
+EDGE_METHOD_MARK = True
+# headless
+EDGE_HEADLESS = True
+# page load time
+EDGE_PAGE_LOAD_TIME = 30
+# javascript execution time out
+EDGE_SCRIPT_TIMEOUT = 30
+# clean session
+EDGE_CLEAN_SESSION = True
+# ----------------Edge Option Config--------------
+# Firefox config option switch
+SAFARI_OPTION_MARK = True
+# Firefox's settings after start switch
+SAFARI_METHOD_MARK = True
+# headless
+SAFARI_HEADLESS = False
+
+SAFARI_IMPLICITLY_WAIT_TIME = 20
+# page load time
+SAFARI_PAGE_LOAD_TIME = 30
+# javascript execution time out
+SAFARI_SCRIPT_TIMEOUT = 30
+
+# -------Smart wait for web elements config-------
 # web element location wait time
 UI_TIME_OUT = 300
 POLL_FREQUENCY = 0.5

@@ -1,19 +1,15 @@
-#! /usr/bin/python3
-# -*-coding:utf-8-*-
-# @Time: 2022-10-31 9:22 p.m.
-# Author: Ding
 from time import sleep
 from typing import Type, Union
 
 # import different browser and their options
 from selenium.webdriver import Chrome, ChromeOptions, Firefox, FirefoxOptions, Edge, EdgeOptions, Safari
 from selenium.webdriver.chrome.service import Service as ChromeService
-# from selenium.webdriver.firefox.service import Service as FirefoxService
-# from selenium.webdriver.edge.service import Service as EdgeService
+from selenium.webdriver.edge.service import Service as EdgeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
-# from webdriver_manager.firefox import GeckoDriverManager
-# from webdriver_manager.microsoft import EdgeChromiumDriverManager
 import settings
 
 
@@ -76,7 +72,7 @@ class ChromeBrowser(Browser):
     arguments = settings.CHROME_ARGUMENTS
     # run chrome on mobile devices
     experiment = settings.CHROME_EXPERIMENTAL
-    # webdriver manager to manage latest match driver for chrome
+    # webdriver manager to manage matched driver for chrome
     service = ChromeService(executable_path=ChromeDriverManager().install())
 
     @property
@@ -113,7 +109,117 @@ class ChromeBrowser(Browser):
         return chrome
 
 
+class FirefoxBrowser(Browser):
+    # add option mark to use default options or customized options
+    option_mark = settings.FIREFOX_OPTION_MARK
+    # config the browser after it starts
+    method_mark = settings.FIREFOX_METHOD_MARK
+
+    # override base class Browser attribute
+    headless = settings.FIREFOX_HEADLESS
+    page_load_time = settings.FIREFOX_PAGE_LOAD_TIME
+    script_time_out = settings.FIREFOX_SCRIPT_TIMEOUT
+
+    service = FirefoxService(executable_path=GeckoDriverManager().install())
+
+    def __init__(self):
+        super().__init__(browser_type=Firefox, option_type=FirefoxOptions)
+
+    @property
+    def options(self):
+        return self._option()
+
+    @property
+    def browser(self):
+        if self.options:  # set options for browser before it starts
+            firefox = self._browser(service=self.service, options=self.options)
+        else:  # default option for browser
+            firefox = self._browser(service=self.service)
+
+        if self.method_mark:  # set actions after the browser started
+            firefox.implicitly_wait(self.implicit_time)
+            firefox.set_script_timeout(self.script_time_out)
+            firefox.set_page_load_timeout(self.page_load_time)
+            firefox.delete_all_cookies()
+            firefox.maximize_window()
+
+        return firefox
+
+
+class EdgeBrowser(Browser):
+    # add option mark to use default options or customized options
+    option_mark = settings.EDGE_OPTION_MARK
+    # config the browser after it starts
+    method_mark = settings.EDGE_METHOD_MARK
+
+    # override base class Browser attribute
+    headless = settings.EDGE_HEADLESS
+    page_load_time = settings.EDGE_PAGE_LOAD_TIME
+    script_time_out = settings.EDGE_SCRIPT_TIMEOUT
+    clean_session = settings.EDGE_CLEAN_SESSION
+
+    service = EdgeService(executable_path=EdgeChromiumDriverManager().install())
+
+    def __init__(self):
+        super().__init__(browser_type=Edge, option_type=EdgeOptions)
+
+    @property
+    def options(self):
+        return self._option()
+
+    @property
+    def browser(self):
+        if self.options:  # set options for browser before it starts
+            edge = self._browser(service=self.service, options=self.options)
+        else:  # default option for browser
+            edge = self._browser(service=self.service)
+
+        if self.method_mark:  # set actions after the browser started
+            edge.implicitly_wait(self.implicit_time)
+            edge.set_script_timeout(self.script_time_out)
+            edge.set_page_load_timeout(self.page_load_time)
+            edge.delete_all_cookies()
+            edge.maximize_window()
+
+        return edge
+
+
+class SafariBrowser:
+    # add option mark to use default options or customized options
+    option_mark = settings.SAFARI_OPTION_MARK
+    # config the browser after it starts
+    method_mark = settings.SAFARI_METHOD_MARK
+
+    # override base class Browser attribute
+    implicit_time = settings.SAFARI_IMPLICITLY_WAIT_TIME
+    headless = settings.SAFARI_HEADLESS
+    page_load_time = settings.SAFARI_PAGE_LOAD_TIME
+    script_time_out = settings.SAFARI_SCRIPT_TIMEOUT
+    # Safari has preinstalled webdriver
+    service = None
+
+    @property
+    def options(self):
+        return
+
+    @property
+    def browser(self):
+        if self.options:  # set options for browser before it starts
+            safari = Safari(service=self.service, options=self.options)
+        else:  # default option for browser
+            safari = Safari(service=self.service)
+
+        if self.method_mark:  # set actions after the browser started
+            safari.implicitly_wait(self.implicit_time)
+            safari.set_script_timeout(self.script_time_out)
+            safari.set_page_load_timeout(self.page_load_time)
+            safari.delete_all_cookies()
+            safari.maximize_window()
+
+        return safari
+
+
 if __name__ == '__main__':
-    with ChromeBrowser().browser as _chrome:
-        _chrome.get('http://www.amazon.ca')
+    with FirefoxBrowser().browser as _firefox:
+        _firefox.get('http://www.amazon.ca')
         sleep(3)

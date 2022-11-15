@@ -4,7 +4,7 @@ from behave import given, when, then
 from util.report_util import add_img_to_report
 
 
-@allure.story("Test purchase process")
+@allure.story("BDD-test purchase process")
 @allure.feature("Add product to cart")
 @allure.description("add product to cart")
 @given(u'a list of products')
