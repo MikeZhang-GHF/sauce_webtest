@@ -5,7 +5,9 @@
 import pytest
 
 from page.login_page import LoginPage
-from util.browser import ChromeBrowser, FirefoxBrowser, EdgeBrowser
+from util.browser import ChromeBrowser
+# from util.browser import FirefoxBrowser
+# from util.browser import EdgeBrowser
 
 get_driver = None
 
