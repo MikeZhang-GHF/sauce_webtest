@@ -9,18 +9,19 @@ on:
 
 jobs:
 
-    build:
-      env:
-        PY_COLORS: "1"
-      strategy:
-        fail-fast: false
-        max-parallel: 9
-        matrix:
-          os: [macos-latest]
-          python-version: ["3.8"]
+  build:
+    env:
+      PY_COLORS: "1"
+    strategy:
+      fail-fast: false
+      max-parallel: 15
+      matrix:
+#        os: [ ubuntu-20.04, macos-latest, windows-latest ]
+        os: [ ubuntu-20.04 ]
+        python-version: [ "3.8" ]
 
-      runs-on: ${{ matrix.os }}
-      steps:
+    runs-on: ${{ matrix.os }}
+    steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
@@ -31,17 +32,25 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install --upgrade wheel
           pip install -r requirements.txt
-      - name: Install allure
+      - name: Install Chrome, Edge, and Firefox
+        if: matrix.os == 'ubuntu-20.04'
         run: |
-          brew install allure
+            sudo apt install google-chrome-stable
+            sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
+            sudo apt update
+            sudo apt install microsoft-edge-stable
+            sudo apt-get install firefox
+#      - name: Install allure
+#        run: |
+#          brew install allure
       - name: Run web test cases
         run: |
           python webtest_all.py
-      - name: Generate allure web_test_report
-        run: |
-          allure generate web_test_report/ -o web_test_report/html --clean
-      - name: Deploy web test allure report
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:
-          branch: gh-pages
-          folder: web_test_report
+#      - name: Generate allure web_test_report
+#        run: |
+#          allure generate web_test_report/ -o web_test_report/html --clean
+#      - name: Deploy web test allure report
+#        uses: JamesIves/github-pages-deploy-action@v4.4.1
+#        with:
+#          branch: gh-pages
+#          folder: web_test_report

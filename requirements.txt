@@ -7,8 +7,10 @@ pytest-rerunfailures
 allure-pytest
 allure-python-commons
 allure-behave
-selenium==3.141.0
+selenium=3.141.0
+webdriver-manager=3.8.4
 pyyaml
 xlrd==1.2.0
 faker
 behave
+parse

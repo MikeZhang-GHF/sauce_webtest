@@ -5,8 +5,8 @@
 from time import sleep
 from typing import Type, Union
 
-# import different browser and their options
 from selenium.webdriver import *
+from webdriver_manager.chrome import ChromeDriverManager
 
 import settings
 
@@ -20,10 +20,6 @@ class BrowserTypeError(Exception):
 
 
 class Browser:
-    chrome_driver_path = settings.CHROME_DRIVER_PATH
-    firefox_driver_path = settings.FIREFOX_DRIVER_PATH
-    edge_driver_path = settings.EDGE_DRIVER_PATH
-    ie_driver_path = settings.IE_DRIVER_PATH
     # wind size
     windows_size = settings.WINDOW_SIZE
     # wait time
@@ -35,35 +31,25 @@ class Browser:
     # default headless
     headless = settings.HEADLESS
 
-    def __init__(self, browser_type: Type[Union[Chrome, Ie, Edge, Firefox, Safari]] = Chrome,
-                 option_type: Type[Union[ChromeOptions, FirefoxOptions, IeOptions]] = ChromeOptions,
-                 driver_path: str = chrome_driver_path):
+    def __init__(self, browser_type: Type[Union[Chrome, Edge, Firefox, Safari]] = Chrome,
+                 option_type: Type[Union[ChromeOptions, FirefoxOptions]] = ChromeOptions):
 
-        if not issubclass(browser_type, (Chrome, Ie, Edge, Firefox, Safari)):
+        if not issubclass(browser_type, (Chrome, Edge, Firefox, Safari)):
             raise BrowserTypeError(browser_type)
-        if not issubclass(option_type, (ChromeOptions, FirefoxOptions, IeOptions)):
+        if not issubclass(option_type, (ChromeOptions, FirefoxOptions)):
             raise BrowserTypeError(option_type)
-        if not isinstance(driver_path, str):
-            raise TypeError
 
-        self._path = driver_path
         self._browser = browser_type
         self._option = option_type
 
     @property
     def options(self):
-        """
-        browser options implemented by subclass
-        :return:
-        """
+        """browser options implemented by subclass"""
         return
 
     @property
     def browser(self):
-        """
-        return a browser instance implemented by subclass
-        :return:
-        """
+        """return a browser instance implemented by subclass"""
         return
 
 
@@ -85,6 +71,7 @@ class ChromeBrowser(Browser):
 
     @property
     def options(self):
+        chrome_option = None
         if self.option_mark:
             chrome_option = self._option()
 
@@ -95,16 +82,18 @@ class ChromeBrowser(Browser):
                 chrome_option.add_experimental_option(k, v)
             chrome_option.headless = self.headless
 
-            return chrome_option
-        else:
-            return None
+        return chrome_option
 
     @property
     def browser(self):
         if self.options:  # set options for browser before it starts
-            chrome = self._browser(self._path, options=self.options)
+            chrome = self._browser(
+                # automatic download the matched chrome webdriver
+                ChromeDriverManager().install(),
+                options=self.options
+            )
         else:  # default option for browser
-            chrome = self._browser(self._path)
+            chrome = self._browser(ChromeDriverManager().install())
 
         if self.method_mark:  # set actions after the browser started
             chrome.implicitly_wait(self.implicit_time)
@@ -116,35 +105,7 @@ class ChromeBrowser(Browser):
         return chrome
 
 
-class IEBrowser(Browser):
-    clean_session = True
-
-    def __init__(self):
-        super().__init__(
-            browser_type=Ie,
-            option_type=IeOptions,
-            driver_path=super().ie_driver_path
-        )
-
-    @property
-    def options(self):
-        ie_option = self._option()
-        ie_option.ensure_clean_session = self.clean_session
-
-        return ie_option
-
-    @property
-    def browser(self):
-        ie = self._browser(self._path, options=self.options)
-        ie.implicitly_wait(self.implicit_time)
-        ie.set_page_load_timeout(self.page_load_time)
-        ie.set_script_timeout(self.script_time_out)
-        ie.maximize_window()
-        return ie
-
-
 if __name__ == '__main__':
     with ChromeBrowser().browser as _chrome:
-        # _chrome.get('http://www.amazon.ca')
         _chrome.get('https://www.saucedemo.com/')
         sleep(2)

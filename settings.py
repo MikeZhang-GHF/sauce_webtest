@@ -1,8 +1,3 @@
-#! /usr/bin/python3
-# -*-coding:utf-8-*-
-# @Time: 2022-11-10 3:10 p.m.
-# Author: Ding
-
 import os
 
 # project base dir
