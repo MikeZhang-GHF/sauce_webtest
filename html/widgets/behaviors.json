@@ -1,1 +1,1 @@
-{"total":0,"items":[]}
+{"total":3,"items":[{"uid":"f181f4d4657859c416fa3ef7b59840ce","name":"Login Test","statistic":{"failed":0,"broken":2,"skipped":0,"passed":0,"unknown":0,"total":2}},{"uid":"410cb6d3cdc83abf5aa227d0513db505","name":"Test Product Purchase Process","statistic":{"failed":0,"broken":2,"skipped":0,"passed":0,"unknown":0,"total":2}}]}
