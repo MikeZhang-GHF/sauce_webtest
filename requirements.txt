@@ -6,7 +6,7 @@ pytest-ordering==0.6
 pytest-rerunfailures==10.2
 allure-pytest==2.11.1
 allure-python-commons==2.11.1
-allure-behave=2.11.1
+allure-behave==2.11.1
 selenium==4.6.0
 webdriver-manager==3.8.4
 pyyaml==6.0
