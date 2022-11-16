@@ -5,11 +5,8 @@
 import pytest
 
 from page.login_page import LoginPage
-from util.browser import ChromeBrowser
-from util.browser import EdgeBrowser
-from util.browser import FirefoxBrowser
+from util.browser import FirefoxBrowser, EdgeBrowser
 
-# get_driver = None
 
 # valid login for login fixture
 username, password = 'standard_user', 'secret_sauce'
@@ -19,7 +16,8 @@ username, password = 'standard_user', 'secret_sauce'
 # @pytest.fixture()  # parallel testing
 def driver():
     # _driver = ChromeBrowser().browser
-    _driver = FirefoxBrowser().browser
+    # _driver = FirefoxBrowser().browser
+    _driver = EdgeBrowser().browser
 
     return _driver
     # if browser == 'firefox':
@@ -33,9 +31,10 @@ def driver():
     # _driver.quit()
 
 
-# def pytest_add_option(parser):
-#     parser.addoption('--browser')
-#
+def pytest_add_option(parser):
+    print(parser.addoption('--browser'))
+
+
 #
 # @pytest.fixture(scope='class', autouse=True)
 # def browser(request):

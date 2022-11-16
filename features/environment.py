@@ -38,5 +38,5 @@ def safari_driver(context):
 
 def before_all(context):
     # use_fixture(chrome_driver, context)
-    use_fixture(firefox_driver, context)
-    # use_fixture(edge_driver, context)
+    # use_fixture(firefox_driver, context)
+    use_fixture(edge_driver, context)
