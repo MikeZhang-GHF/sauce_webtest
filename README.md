@@ -22,7 +22,7 @@ Please refer to the page directory for detailed information.
 - Testcase layer, functional test, call the services of page service layer to implement the functional test or other business processes.
 Please refer to the testcase directory for detailed information.
 
-- We also customized the browsers on the basis of Selenium webdriver, including the Chrome, Firefox, Edge, Safari, which convers the main stream web browsers in the market. We can apply the compatibility tests for these browsers.
+- We also customized the browsers on the basis of Selenium webdriver, including the Chrome, Firefox, Edge, Safari, which covers the main stream web browsers in the market. We can apply the compatibility tests for these browsers.
 Please refer to the browser file under util directory.
 
 ## Test Framework for Web and BBD Test
@@ -37,8 +37,8 @@ Please refer to the pytest.ini for pytest configuration and the testdata directo
 - For the test report, we used the  Allure report plugins to present the test results. 
 	
 ## CI/CD
-- We used the github actions to trigger the automation web test and BDD test. Please refer to the webtest.yml under .github/workflows directory for detailed information. 
-- The CI results are under Actions link of github repo. The tests will be triggered by the pushs to main or branch and every hour.
+- We used the gitHub actions to trigger the automation web test and BDD test. Please refer to the webtest.yml under .gitHub/workflows directory for detailed information. 
+- The CI results are under Actions link of gitHub repo. The tests will be triggered by the push to main or branch and every hour.
 - The test can also be triggered by the push of other repos, such as development team push the commit to their repos.
 - Web test report is using [GitHub Pages](https://mikezhang-ghf.github.io/sauce_webtest/html/#).
 
