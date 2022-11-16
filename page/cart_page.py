@@ -13,6 +13,7 @@ class CartPage(BasePage):
     locators = YamlReader(settings.ELEMENT_LOCATOR['cart']).data
 
     def checkout(self):
+        """checkout service"""
         self.scroll_to_checkout_button()
         self.click(self.checkout_btn)
         return CheckoutStepOnePage(self.driver)
@@ -23,4 +24,5 @@ class CartPage(BasePage):
 
     @property
     def checkout_button_text(self):
+        """get the text of checkout button as assert"""
         return self.text(self.checkout_btn)

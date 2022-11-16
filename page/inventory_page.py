@@ -13,7 +13,7 @@ from util.file_reader import YamlReader
 
 class InventoryPage(BasePage, InventoryBase):
     """
-        Use the different locator encapsulation method
+        Use a different locator encapsulation method
         The reason is:
             Inventory page is composed of many product components,
             the locating strategy is the same except the product name different.

@@ -32,13 +32,16 @@ class LoginPage(BasePage):
         self.click(self.login_btn)
 
     def login_pass(self, username: str, password: str):
+        """login as valid user service"""
         self.__login_process(username, password)
         return InventoryPage(self.driver)
 
     def login_fail(self, username: str, password: str):
+        """failed login service"""
         self.__login_process(username, password)
         return self
 
     @property
     def error_message(self):
+        """show the failed login error message"""
         return self.text(self.error_msg)

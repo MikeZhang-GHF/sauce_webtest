@@ -11,6 +11,7 @@ class CheckoutCompletePage(BasePage):
     locators = YamlReader(settings.ELEMENT_LOCATOR['checkout_complete']).data
 
     def back_home(self):
+        """go back to home page"""
         self.click(self.back_home_btn)
 
     @property

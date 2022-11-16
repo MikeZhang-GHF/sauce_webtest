@@ -14,9 +14,7 @@ import settings
 
 # PO pattern
 class BasePage:
-    """
-    Base class for all the page objects.
-    """
+    """base page object to encapsulate the common page services"""
 
     url = settings.SAUCE_PROJECT
     locators = {}

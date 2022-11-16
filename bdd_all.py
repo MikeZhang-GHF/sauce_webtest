@@ -9,10 +9,10 @@ if __name__ == '__main__':
     # start behavior driven test
     os.system(
         "behave -f allure_behave.formatter:AllureFormatter "
-        "-o behavior_test_report/ "
+        "-o bdd_test_report/ "
         "features/ --exclude inventory.feature")
     # generate test report by allure
-    os.system(
-        "allure generate behavior_test_report/ "
-        "-o behavior_test_report/html --clean")
-    print("finish behavior driven test!")
+    # os.system(
+    #     "allure generate bdd_test_report/ "
+    #     "-o bdd_test_report/html --clean")
+    # print("finish behavior driven test!")
