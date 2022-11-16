@@ -37,7 +37,7 @@ jobs:
           sudo apt install google-chrome-stable
           sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
           sudo apt update
-          # sudo apt install microsoft-edge-stable
+          sudo apt install microsoft-edge-stable
           sudo apt-get install firefox
       - name: Install Allure
         if: matrix.os == 'macos-latest'
@@ -45,13 +45,13 @@ jobs:
           brew install allure
       - name: Run web test cases on Firefox browser
         run: |
-          pytest -vs -n auto --alluredir=report --browser=firefox
-      - name: Run BDD test cases on Firefox browser
+          pytest -vs -n auto --browser=firefox --reruns 3 --reruns-delay 1
+      - name: Run web test cases on Edge browser
         run: |
-          behave -f allure_behave.formatter:AllureFormatter -o report/ features/ --exclude inventory.feature
+          pytest -vs -n auto --browser=edge --reruns 3 --reruns-delay 1
       - name: Run web test cases on Chrome browser
         run: |
-          pytest -vs -n auto --alluredir=report --browser=chrome
+          pytest -vs -n auto --alluredir=report --browser=chrome --reruns 3 --reruns-delay 1
       - name: Run BDD test cases on Chrome browser
         run: |
           behave -f allure_behave.formatter:AllureFormatter -o report/ features/ --exclude inventory.feature
