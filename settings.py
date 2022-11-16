@@ -57,7 +57,7 @@ FIREFOX_OPTION_MARK = True
 # Firefox's settings after start switch
 FIREFOX_METHOD_MARK = True
 # headless
-FIREFOX_HEADLESS = True
+FIREFOX_HEADLESS = False
 # page load time
 FIREFOX_PAGE_LOAD_TIME = 40
 # javascript execution time out
