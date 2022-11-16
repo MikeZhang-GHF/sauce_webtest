@@ -32,8 +32,6 @@ class Browser:
     script_time_out = settings.SCRIPT_TIMEOUT
     # default headless
     headless = settings.HEADLESS
-    # webdriver manager download matched webdriver for browser
-    service = None
 
     def __init__(self, browser_type: Type[Union[Chrome, Firefox, Edge, Safari]] = Chrome,
                  option_type: Type[Union[ChromeOptions, FirefoxOptions, EdgeOptions]] = ChromeOptions):
@@ -72,7 +70,7 @@ class ChromeBrowser(Browser):
     arguments = settings.CHROME_ARGUMENTS
     # run chrome on mobile devices
     experiment = settings.CHROME_EXPERIMENTAL
-    # webdriver manager to manage matched driver for chrome
+    # download the matched webdriver for browser
     service = ChromeService(executable_path=ChromeDriverManager().install())
 
     @property
@@ -127,7 +125,11 @@ class FirefoxBrowser(Browser):
 
     @property
     def options(self):
-        return self._option()
+        firefox_option = None
+        if self.option_mark:
+            firefox_option = self._option()
+            firefox_option.headless = self.headless
+        return firefox_option
 
     @property
     def browser(self):
@@ -156,7 +158,7 @@ class EdgeBrowser(Browser):
     headless = settings.EDGE_HEADLESS
     page_load_time = settings.EDGE_PAGE_LOAD_TIME
     script_time_out = settings.EDGE_SCRIPT_TIMEOUT
-    clean_session = settings.EDGE_CLEAN_SESSION
+    # clean_session = settings.EDGE_CLEAN_SESSION
 
     service = EdgeService(executable_path=EdgeChromiumDriverManager().install())
 
@@ -165,7 +167,11 @@ class EdgeBrowser(Browser):
 
     @property
     def options(self):
-        return self._option()
+        edge_option = None
+        if self.option_mark:
+            edge_option = self._option()
+            edge_option.headless = self.headless
+        return edge_option
 
     @property
     def browser(self):
@@ -219,7 +225,15 @@ class SafariBrowser:
         return safari
 
 
-if __name__ == '__main__':
-    with FirefoxBrowser().browser as _firefox:
-        _firefox.get('http://www.amazon.ca')
-        sleep(3)
+# if __name__ == '__main__':
+#     with FirefoxBrowser().browser as _firefox:
+#         _firefox.get('http://www.amazon.ca')
+#         sleep(2)
+    #
+    # with ChromeBrowser().browser as _firefox:
+    #     _firefox.get('http://www.amazon.ca')
+    #     sleep(2)
+
+    # with EdgeBrowser().browser as _edge:
+    #     _edge.get('http://www.amazon.ca')
+    #     sleep(2)

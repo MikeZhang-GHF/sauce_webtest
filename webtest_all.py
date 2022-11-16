@@ -8,4 +8,4 @@ import pytest
 
 if __name__ == '__main__':
     pytest.main()
-    # os.system("allure generate web_test_report/ -o web_test_report/html --clean")
+    # os.system("allure generate report/ -o report/html --clean")

@@ -10,7 +10,7 @@ import allure
 def add_img_to_report(driver, step_name, need_sleep=True):
     """add screenshot tot allure report"""
     if need_sleep:
-        sleep(2)
+        sleep(1)
     allure.attach(
         driver.get_screenshot_as_png(),
         f"{step_name}.png",
