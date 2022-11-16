@@ -45,7 +45,6 @@ jobs:
           brew install allure
       - name: Run web test cases
         run: |
-#          python webtest_all.py
           pytest -vs -n auto --alluredir=report
       - name: Run BDD test cases
         run: |
