@@ -46,5 +46,5 @@ Please refer to the [pytest.ini](https://github.com/MikeZhang-GHF/sauce_webtest/
 - The gitHub actions are used to trigger the automation web and BDD test. Please refer to the **webtest.yml** under [.gitHub/workflows](https://github.com/MikeZhang-GHF/sauce_webtest/tree/main/.github/workflows) directory for detailed information. 
 - The CI results are under [Actions](https://github.com/MikeZhang-GHF/sauce_webtest/actions) link of gitHub repo. The tests will be triggered by the push to main or branch and scheduled to run every hour.
 - The test can also be triggered by the push of other repos, such as development team push the commit to their repos.
-- Web test report is using [GitHub Pages](https://mikezhang-ghf.github.io/sauce_webtest/html/#).
+- Web and BDD test report is presented by using [GitHub Pages](https://mikezhang-ghf.github.io/sauce_webtest/html/#).
 
