@@ -1,6 +1,6 @@
 import os
 
-# project base dir
+
 BASE_DIR = os.path.dirname(__file__)
 
 # ----------------Browser Driver Attributes-------------
