@@ -5,13 +5,6 @@ BASE_DIR = os.path.dirname(__file__)
 
 # ----------------Browser Driver Attributes-------------
 # Base browser attributes
-DRIVER_BASE_DIR = os.path.join(BASE_DIR, 'driver')
-
-CHROME_DRIVER_PATH = os.path.join(DRIVER_BASE_DIR, "chrome_driver")
-FIREFOX_DRIVER_PATH = os.path.join(DRIVER_BASE_DIR, "firefox_driver")
-EDGE_DRIVER_PATH = os.path.join(DRIVER_BASE_DIR, "edge_driver")
-IE_DRIVER_PATH = os.path.join(DRIVER_BASE_DIR, "ie_driver")
-
 HEADLESS = False
 IMPLICITLY_WAIT_TIME = 20
 PAGE_LOAD_TIME = 20
