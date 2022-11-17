@@ -40,7 +40,7 @@ class TestLogin:
     @pytest.mark.login_fail
     @allure.story("Test failed logins")
     @allure.feature("Failed Logins")
-    @allure.description("Test failed logins")
+    @allure.description("Test failed logins negative cases")
     @pytest.mark.parametrize('username, password, expect', data_fail)
     def test_login_fail(self, username, password, expect, driver):
         with allure.step("Step 1: input username and password."):
@@ -49,5 +49,5 @@ class TestLogin:
         with allure.step("Step 2: click login to the inventory page."):
             page.login_fail(username, password)
             assert page.error_message == expect
-            sleep(2)
+            sleep(1)
             add_img_to_report(driver, "failed_logins")

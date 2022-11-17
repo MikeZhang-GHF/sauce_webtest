@@ -1,5 +1,4 @@
-from configparser import ConfigParser
-from os.path import exists, join
+from os.path import exists
 
 from xlrd import open_workbook
 from yaml import safe_load, safe_load_all
@@ -82,41 +81,6 @@ class ExcelReader(File):
                 for col in range(0, sheet.nrows):
                     self._data.append(sheet.row_values(col))
         return self._data
-
-
-class INIReader(File):
-
-    def __init__(self, ini_path: str, section: str = 'MYSQL'):
-        super().__init__(ini_path)
-        self._data = {}
-        self._section = section.upper()
-        self._parser = ConfigParser()
-
-    @property
-    def data(self):
-        if not self._data:
-            self._parser.read(self._file_path, encoding='utf-8')
-            for k, v in self._parser.items(self._section):
-                self._data[k] = int(v) if k in ('port', 'maxsize', 'minsize', 'max', 'min', 'increment') else v
-
-        return self._data
-
-
-def get_test_data(filename):
-    reader = YamlReader(settings.TEST_DATA[filename])
-    data = []
-    for item in reader.data:
-        _item = list(item.values())[0]
-        _data = _item.get('data')
-        expect = _item.get('expect')
-        _data.append(expect)
-        data.append(_data)
-
-    return data
-
-
-def get_img_path(filename):
-    return join(settings.IMG_FILE_DIR, filename)
 
 
 if __name__ == '__main__':
