@@ -12,6 +12,8 @@ Three layers are used for the implementation of PO pattern.
 2. **Page service layer**
 3. **Testcase(core functional test) layer**
 
+![Page Object Pattern Chart](https://github.com/MikeZhang-GHF/sauce_webtest/blob/main/image/po_design.jpg)
+
 The main reason is to limit the impacts to other layer once changes happen in one layer and apply the single responsibility principle.
 
 - UI element locating layer, the locating strategy for all the elements needed are saved in the yaml files or python files(in special cases). A lot of changes could happen for the front end development. Once the UI element changes, we can only change the yaml file, limiting the impacts to the other two layers. 
