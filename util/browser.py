@@ -223,17 +223,3 @@ class SafariBrowser:
             safari.maximize_window()
 
         return safari
-
-
-# if __name__ == '__main__':
-#     with FirefoxBrowser().browser as _firefox:
-#         _firefox.get('http://www.amazon.ca')
-#         sleep(2)
-    #
-    # with ChromeBrowser().browser as _firefox:
-    #     _firefox.get('http://www.amazon.ca')
-    #     sleep(2)
-
-    # with EdgeBrowser().browser as _edge:
-    #     _edge.get('http://www.amazon.ca')
-    #     sleep(2)
